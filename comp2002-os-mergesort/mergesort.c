@@ -5,41 +5,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <string.h>
 #include "mergesort.h"
 
-#define MAX_LEVEL 4              // Max recursion depth for threads
-#define MIN_SIZE_FOR_THREAD 100000  // Only create threads for big enough subarrays
+#define MAX_LEVEL 8             // Max recursion depth for threads
+#define MIN_SIZE_FOR_THREAD 100  // Only create threads for big enough subarrays
 
-int *A;
-int *B;
-
-struct argument {
-    int left;
-    int right;
-    int level;
-};
-
-/* Merge using memcpy for the remaining elements */
 void merge(int leftstart, int leftend, int rightstart, int rightend) {
-    int i = leftstart;
-    int j = rightstart;
-    int k = leftstart;
+    int i = leftstart, j = rightstart, k = leftstart;
 
-    // Copy segment of A into B
-    for (int x = leftstart; x <= rightend; x++)
-        B[x] = A[x];
+    // Copy relevant part into B
+    memcpy(B + leftstart, A + leftstart, (rightend - leftstart + 1) * sizeof(int));
 
     while (i <= leftend && j <= rightend) {
-        if (B[i] <= B[j])
-            A[k++] = B[i++];
-        else
-            A[k++] = B[j++];
+        if (B[i] <= B[j]) A[k++] = B[i++];
+        else A[k++] = B[j++];
     }
 
-    // Copy remaining left half
-    if (i <= leftend)
+    if (i <= leftend) {
         memcpy(A + k, B + i, (leftend - i + 1) * sizeof(int));
-    // No need to copy right half: already in place
+    }
 }
 
 /* Sequential mergesort */
