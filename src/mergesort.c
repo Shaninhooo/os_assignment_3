@@ -8,29 +8,28 @@
 #include <string.h>
 #include "mergesort.h"
 
-#define MAX_LEVEL 8             // Max recursion depth for threads
-#define MIN_SIZE_FOR_THREAD 100  // Only create threads for big enough subarrays
+#define MIN_SIZE_FOR_THREAD 100
 
-void merge(int leftstart, int leftend, int rightstart, int rightend) {
-    int i = leftstart, j = rightstart, k = leftstart;
+void merge(const int leftStart, const int leftEnd, const int rightStart, const int rightEnd) {
+    int i = leftStart, j = rightStart, k = leftStart;
 
     // Copy relevant part into B
-    memcpy(B + leftstart, A + leftstart, (rightend - leftstart + 1) * sizeof(int));
+    memcpy(B + leftStart, A + leftStart, (rightEnd - leftStart + 1) * sizeof(int));
 
-    while (i <= leftend && j <= rightend) {
+    while (i <= leftEnd && j <= rightEnd) {
         if (B[i] <= B[j]) A[k++] = B[i++];
         else A[k++] = B[j++];
     }
 
-    if (i <= leftend) {
-        memcpy(A + k, B + i, (leftend - i + 1) * sizeof(int));
+    if (i <= leftEnd) {
+        memcpy(A + k, B + i, (leftEnd - i + 1) * sizeof(int));
     }
 }
 
 /* Sequential mergesort */
-void my_mergesort(int left, int right) {
+void my_mergesort(const int left, const int right) {
     if (left < right) {
-        int mid = left + (right - left) / 2;
+        const int mid = left + (right - left) / 2;
         my_mergesort(left, mid);
         my_mergesort(mid + 1, right);
         merge(left, mid, mid + 1, right);
@@ -38,7 +37,7 @@ void my_mergesort(int left, int right) {
 }
 
 /* Build argument struct */
-struct argument *buildArgs(int left, int right, int level) {
+struct argument *buildArgs(const int left, const int right, const int level) {
     struct argument *args = malloc(sizeof(struct argument));
     args->left = left;
     args->right = right;
@@ -48,19 +47,19 @@ struct argument *buildArgs(int left, int right, int level) {
 
 /* Parallel mergesort with adaptive thread spawning */
 void *parallel_mergesort(void *arg) {
-    struct argument *args = (struct argument *)arg;
-    int left = args->left;
-    int right = args->right;
-    int level = args->level;
+    struct argument *args = arg;
+    const int left = args->left;
+    const int right = args->right;
+    const int level = args->level;
     free(args);
 
     if (left >= right) return NULL;
 
-    int mid = left + (right - left) / 2;
-    int size = right - left + 1;
+    const int mid = left + (right - left) / 2;
+    const int size = right - left + 1;
 
     // Only spawn threads for large subarrays and shallow recursion
-    if (level < MAX_LEVEL && size > MIN_SIZE_FOR_THREAD) {
+    if (level < cutoff && size > MIN_SIZE_FOR_THREAD) {
         pthread_t t1, t2;
 
         pthread_create(&t1, NULL, parallel_mergesort, buildArgs(left, mid, level + 1));
