@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <string.h>
-#include "mergesort.h"
+#include "comp2002-os-mergesort/mergesort.h"
 
 #define MAX_LEVEL 8             // Max recursion depth for threads
 #define MIN_SIZE_FOR_THREAD 100  // Only create threads for big enough subarrays
