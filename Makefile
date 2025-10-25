@@ -37,8 +37,8 @@ run: $(EXECUTABLE)
 
 # Run the test-mergesort algorithm
 run_default: $(EXECUTABLE)
-	@echo "-> RUNNING: $(EXECUTABLE) 100000000 2 1234"
-	./$(EXECUTABLE) 100000000 2 1234
+	@echo "-> RUNNING: $(EXECUTABLE) 100000000 8 1234"
+	./$(EXECUTABLE) 100000000 8 1234
 
 # Include the automatically generated dependency files.
 # This ensures that if a header file changes, the corresponding C file is recompiled.
