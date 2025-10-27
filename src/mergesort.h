@@ -5,7 +5,7 @@
 
 // function prototypes
 void my_mergesort(int left, int right);
-void merge(int leftstart, int leftend, int rightstart, int rightend);
+void merge(int leftStart, int leftEnd, int rightStart, int rightEnd);
 
 /* each instance of this struct stores the argument to the parallel_mergesort() function. */
 struct argument {
