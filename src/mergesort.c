@@ -8,8 +8,6 @@
 #include <string.h>
 #include "mergesort.h"
 
-#define MIN_SIZE_FOR_THREAD 100
-
 void merge(const int leftStart, const int leftEnd, const int rightStart, const int rightEnd) {
     int i = leftStart, j = rightStart, k = leftStart;
 
@@ -58,8 +56,8 @@ void *parallel_mergesort(void *arg) {
     const int mid = left + (right - left) / 2;
     const int size = right - left + 1;
 
-    // Only spawn threads for large subarrays and shallow recursion
-    if (level < cutoff && size > MIN_SIZE_FOR_THREAD) {
+    // Spawn Next Threads for next level if below cutoff
+    if (level < cutoff) {
         pthread_t t1, t2;
 
         pthread_create(&t1, NULL, parallel_mergesort, buildArgs(left, mid, level + 1));

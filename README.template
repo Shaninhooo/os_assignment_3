@@ -1,21 +1,27 @@
 README.template
 
-## Project Number/Title 
+## Assignment 3 Concurrency  
 
-* Authors: Your Name, and your group members’ names
-* Group name: Your Group Name
+* Authors: Shane Lee, Ethan Dankiw, Tony Le
+* Group name: Assignment 3 Groups 36
 
 ## Overview
 
-Concisely explain what the program does. If this exceeds a couple of
-sentences, you're going too far. Generally, you should be pulling this
-right from the project specification. We don't want you to just cut and
-paste, but paraphrase what is stated in the project specification.
+This program will be a multi-threaded parallelised version of the merge sort algorithm using the pthread library.
+It will simply take the size of a random array, the level of parallelisation or the cutoff number and the seed as input 
+and return the time it took to sort the randomised array.
 
 ## Manifest
 
-A listing of source files and other non-generated files, and a brief
-(one-line) explanation of the purpose of each file.
+A listing of source files and other non-generated files, and a brief (one-line) explanation of the purpose of each file.
+- mergesort.c
+The file where all the functionalities of the program are in.
+- mergesort.h
+The file that has all the main variables initialised in.
+- test-mergesort.c
+The file that runs all the functions of the program using a test randomly generated array and prints the result and the time taken for finish.
+- Makefile
+The file used to compile the programs.
 
 ## Building the project
 
@@ -23,6 +29,10 @@ This section should tell the user how to build your code.  If you are
 delivering a library, where does it need to be installed, or how do you use
 it? Is this an executable, if so, how can a user get up to speed as fast as
 possible?
+
+To build and run the program you need to:
+1. build by inputting "make all" on the terminal
+2. run by running "./test-mergesort <randomised array size> <cutoff level> <seed>" in the terminal
 
 ## Features and usage
 
@@ -55,3 +65,5 @@ If you used any sources outside of the textbook, you should list them here.
 If you looked something up on stackoverflow.com or you use help from AI, and 
 fail to cite it in this section, it will be considered plagiarism and dealt 
 with accordingly. So be safe CITE!
+
+https://www.geeksforgeeks.org/c/c-program-for-merge-sort/
