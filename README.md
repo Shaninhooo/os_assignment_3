@@ -18,6 +18,7 @@ A listing of source files and other non-generated files, and a brief (one-line) 
   - Explains the motivations for the project, compile and run commands, and testing data.
 - **Makefile**
     - Outlines alias commands that can be entered into the terminal to compile, run and test the mergesort algorithm.
+    - See the `Makefile` for available commands that can be executed.
 - **test_data.png**
   - The raw testing data entered into the spreadsheet to calculate the cutoff value that produced the best runtime.
 - **test_data.png**
