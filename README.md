@@ -39,6 +39,14 @@ To build and run the program you need to:
 Summarise the main features of your program. It is also appropriate to
 instruct the user how to use your program.
 
+Merge.c consists of 4 functions: merge, my_mergesort, buildArgs, parallel_mergesort
+merge: function which will merge arrays into one
+my_mergesort: Recursive sequential calls of merge
+buildArgs: build arguments list with index to the left and right of the array and the level (how many times to split threads)
+parallel_mergesort: Create threads for each level and calling merge once the threads a joined back in
+
+Can be run by running "./test-mergesort <randomised array size> <cutoff level> <seed>" in the terminal
+
 ## Testing
 
 This section should detail how you tested your code. Simply stating "I ran
@@ -51,13 +59,27 @@ List known bugs that you weren't able to fix (or ran out of time to fix).
 
 ## Reflection and Self Assessment
 
-Discuss the issues you encountered during development and testing. What
-problems did you have? What did you have to research and learn on your own?
+Discuss the issues you encountered during development and testing. 
+
+What problems did you have? 
+
+We had a problem with the performance of the parallel_mergesort underperforming and not speeding up enough with higher cutoffs.
+
+What did you have to research and learn on your own?
+
+We had to research the implementation of the mergesort in c and the implementation of parallel threading and methods to optimise all this to be memory efficient and quick.
+
 What kinds of errors did you get? How did you fix them?
 
-What parts of the project did you find challenging? Is there anything that
-finally "clicked" for you in the process of working on this project? How well
-did the development and testing process go for you?
+We had one error with double freeing the args because we were freeing the arg pointer in the mergesort.c file after finishing the threads but the args were already being freed in the test-mergesort.c file which caused the error to fix this we just removed the free in the mergesort.c file.
+
+What parts of the project did you find challenging? Is there anything that finally "clicked" for you in the process of working on this project?
+
+At first we thought we needed locks and mutexes but as we broke down the problems, we realised that we didn't need locks since threads would work in independent areas of the array and we would not need to consider race conditions.
+
+How well did the development and testing process go for you?
+
+The development process was quite simple. Most members had experience with threading and the merge sort algorithm so putting both concepts together wasn't too difficult. Testing was also relatively simple where we tested the code against a range of parameter to ensure the code was efficient and consistent
 
 ## Sources Used
 
@@ -67,3 +89,5 @@ fail to cite it in this section, it will be considered plagiarism and dealt
 with accordingly. So be safe CITE!
 
 https://www.geeksforgeeks.org/c/c-program-for-merge-sort/
+https://pages.cs.wisc.edu/~remzi/OSTEP/threads-api.pdf
+
