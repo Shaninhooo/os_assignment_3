@@ -25,14 +25,20 @@ The file used to compile the programs.
 
 ## Building the project
 
-This section should tell the user how to build your code.  If you are
-delivering a library, where does it need to be installed, or how do you use
-it? Is this an executable, if so, how can a user get up to speed as fast as
-possible?
+There are two ways to compile and run the program
+
+### The automatic way
+
+Automatically build and run by entering `make run_default` or `make run ARGS="<array_size> <cutoff_level> <seed>"`
+- `make run_default` build and runs the code with the params `100000000 8 1234`
+- Both `make run` and `make run_default` has dependencies for the compiled build, so if the build missing or has changes 
+in the source code were made. It will auto compile when needed
+
+### The manual way
 
 To build and run the program you need to:
-1. build by inputting "make all" on the terminal
-2. run by running "./test-mergesort <randomised array size> <cutoff level> <seed>" in the terminal
+1. build by inputting `make all` on the terminal
+2. run by running `./build/test-mergesort <array_size> <cutoff_level> <seed>` in the terminal
 
 ## Features and usage
 
