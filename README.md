@@ -55,9 +55,23 @@ Can be run by running "./test-mergesort <randomised array size> <cutoff level> <
 
 ## Testing
 
-This section should detail how you tested your code. Simply stating "I ran
-it a few times and it seems to work" is not sufficient. Your testing needs
-to be detailed here.
+Our primary focus was to ensure that the code ran without any errors, so additional to the existing compile flags. 
+Our group added the `-Werror` flag which treats all warnings as errors which prevents the build from being executed until
+the code is 100% safe.
+
+The testing phase primarily centered around using GradeScope as the source of truth. However, we always ensured that the 
+code ran without errors locally, then tested a number of cutoff values (1, 2, 4, 8, 12, 16) to see which of those values 
+resulted in a sorting time of less than 2 seconds. We decided to keep the array size and seed the same as those only changed
+the input data, not the desired runtime.
+
+These cutoff values are interpreted were tested 3 times and an average of the runtimes was computed in a spreadsheet.
+Using the average runtime values, the best cutoff value was determined to be `5`.
+
+### Testing data
+![img.png](test_data.png)
+![img.png](test_data_graph.png)
+
+
 
 ## Known Bugs
 
