@@ -7,7 +7,7 @@ README.template
 
 ## Overview
 
-This program will be a multi-threaded parallelised version of the merge sort algorithm using the pthread library.
+This program will be a multithreaded paralleled version of the merge sort algorithm using the pthread library.
 It will simply take the size of a random array, the level of parallelisation or the cutoff number and the seed as input 
 and return the time it took to sort the randomised array.
 
@@ -29,16 +29,17 @@ There are two ways to compile and run the program
 
 ### The automatic way
 
-Automatically build and run by entering `make run_default` or `make run ARGS="<array_size> <cutoff_level> <seed>"`
-- `make run_default` build and runs the code with the params `100000000 8 1234`
-- Both `make run` and `make run_default` has dependencies for the compiled build, so if the build missing or has changes 
-in the source code were made. It will auto compile when needed
+Automatically build and run by entering `make run_best` or `make run ARGS="<array_size> <cutoff_level> <seed>"`
+- `make run_best` build and runs the code with the params `100000000 5 1234`.
+  - These arguments were tested to result in the best runtime (see testing section for details).
+- Both `make run` and `make run_best` has dependencies for the compiled build, so if the build missing or has changes 
+in the source code were made. It will auto compile when needed.
 
 ### The manual way
 
 To build and run the program you need to:
-1. build by inputting `make all` on the terminal
-2. run by running `./build/test-mergesort <array_size> <cutoff_level> <seed>` in the terminal
+1. build by inputting `make all` on the terminal.
+2. run by running `./build/test-mergesort <array_size> <cutoff_level> <seed>` in the terminal.
 
 ## Features and usage
 
@@ -49,9 +50,9 @@ Merge.c consists of 4 functions: merge, my_mergesort, buildArgs, parallel_merges
 merge: function which will merge arrays into one
 my_mergesort: Recursive sequential calls of merge
 buildArgs: build arguments list with index to the left and right of the array and the level (how many times to split threads)
-parallel_mergesort: Create threads for each level and calling merge once the threads a joined back in
+parallel_mergesort: Create threads for each level and calling merge once the threads a joined back in.
 
-Can be run by running "./test-mergesort <randomised array size> <cutoff level> <seed>" in the terminal
+Note: See `Build the project` section for how to run the program.
 
 ## Testing
 
@@ -81,33 +82,36 @@ List known bugs that you weren't able to fix (or ran out of time to fix).
 
 Discuss the issues you encountered during development and testing. 
 
-What problems did you have? 
+**What problems did you have?** 
 
-We had a problem with the performance of the parallel_mergesort underperforming and not speeding up enough with higher cutoffs.
+We had a problem with the performance of the parallel_mergesort underperforming 
+and not speeding up enough with higher cutoffs.
 
-What did you have to research and learn on your own?
+**What did you have to research and learn on your own?**
 
-We had to research the implementation of the mergesort in c and the implementation of parallel threading and methods to optimise all this to be memory efficient and quick.
+We had to research the implementation of the mergesort in c and the implementation of 
+parallel threading and methods to optimise all this to be memory efficient and quick.
 
-What kinds of errors did you get? How did you fix them?
+**What kinds of errors did you get? How did you fix them?**
 
-We had one error with double freeing the args because we were freeing the arg pointer in the mergesort.c file after finishing the threads but the args were already being freed in the test-mergesort.c file which caused the error to fix this we just removed the free in the mergesort.c file.
+We had one error with double freeing the args because we were freeing the arg pointer 
+in the mergesort.c file after finishing the threads but the args were already being freed in the test-mergesort.c 
+file which caused the error to fix this we just removed the free in the mergesort.c file.
 
-What parts of the project did you find challenging? Is there anything that finally "clicked" for you in the process of working on this project?
+**What parts of the project did you find challenging? Is there anything that 
+finally "clicked" for you in the process of working on this project?**
 
-At first we thought we needed locks and mutexes but as we broke down the problems, we realised that we didn't need locks since threads would work in independent areas of the array and we would not need to consider race conditions.
+At first, we thought we needed locks and mutexes but as we broke down the problems, we realised that we didn't need 
+locks since threads would work in independent areas of the array, and we would not need to consider race conditions.
 
-How well did the development and testing process go for you?
+**How well did the development and testing process go for you?**
 
-The development process was quite simple. Most members had experience with threading and the merge sort algorithm so putting both concepts together wasn't too difficult. Testing was also relatively simple where we tested the code against a range of parameter to ensure the code was efficient and consistent
+The development process was quite simple. Most members had experience with threading and the merge sort algorithm so 
+putting both concepts together wasn't too difficult. Testing was also relatively simple where we tested the code against 
+a range of cutoff parameters to ensure the code was efficient and consistent
 
 ## Sources Used
 
-If you used any sources outside of the textbook, you should list them here. 
-If you looked something up on stackoverflow.com or you use help from AI, and 
-fail to cite it in this section, it will be considered plagiarism and dealt 
-with accordingly. So be safe CITE!
-
-https://www.geeksforgeeks.org/c/c-program-for-merge-sort/
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-api.pdf
+1. https://www.geeksforgeeks.org/c/c-program-for-merge-sort/
+2. https://pages.cs.wisc.edu/~remzi/OSTEP/threads-api.pdf
 

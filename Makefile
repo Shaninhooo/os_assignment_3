@@ -36,9 +36,9 @@ run: $(EXECUTABLE)
 	./$(EXECUTABLE) $(ARGS)
 
 # Run the test-mergesort algorithm
-run_default: $(EXECUTABLE)
-	@echo "-> RUNNING: $(EXECUTABLE) 100000000 8 1234"
-	./$(EXECUTABLE) 100000000 8 1234
+run_best: $(EXECUTABLE)
+	@echo "-> RUNNING: $(EXECUTABLE) 100000000 5 1234"
+	./$(EXECUTABLE) 100000000 5 1234
 
 # Automatically test the mergesort algorithm
 test: $(EXECUTABLE)
@@ -48,15 +48,6 @@ test: $(EXECUTABLE)
 	./$(EXECUTABLE) $(ARGS)
 	@echo "-> RUNNING TEST 3: $(EXECUTABLE) $(ARGS)"
 	./$(EXECUTABLE) $(ARGS)
-
-# Automatically test the mergesort algorithm
-test_default: $(EXECUTABLE)
-	@echo "-> RUNNING TEST 1: $(EXECUTABLE) 100000000 8 1234"
-	./$(EXECUTABLE) 100000000 8 1234
-	@echo "-> RUNNING TEST 2: $(EXECUTABLE) 100000000 8 1234"
-	./$(EXECUTABLE) 100000000 8 1234
-	@echo "-> RUNNING TEST 3: $(EXECUTABLE) 100000000 8 1234"
-	./$(EXECUTABLE) 100000000 8 1234
 
 # Include the automatically generated dependency files.
 # This ensures that if a header file changes, the corresponding C file is recompiled.
