@@ -11,6 +11,22 @@ OBJ = mergesort.o $(TARGET).o
 OBJ_FILES = $(addprefix $(BUILD_DIR)/, $(OBJ))
 DEP_FILES = $(patsubst %.o,%.d,$(OBJ_FILES))
 
+## Available Commands
+# make all
+#	- auto-compiles the test-mergesort binary
+#
+# make run ARGS="<input size> <cutoff level> <seed>"
+#	- runs the test-mergesort binary with user-defined arguments
+#
+# make run_best
+#	- runs the test-mergesort binary with the best arguments that produce the shortest runtime discovered during testing
+#
+# make test ARGS="<input size> <cutoff level> <seed>"
+#	- runs the test-mergesort binary 3 times to generate average runtime data for set of user defined arguments
+#
+# make clean
+#	- removes all compiled binaries and intermediate object files
+
 # Build all executables
 all: $(EXECUTABLE)
 	@echo "Build complete. Run with: ./$(EXECUTABLE) <input size> <cutoff level> <seed>"
