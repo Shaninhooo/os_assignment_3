@@ -1,5 +1,3 @@
-README.template
-
 ## Assignment 3 Concurrency  
 
 * Authors: Shane Lee, Ethan Dankiw, Tony Le
