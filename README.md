@@ -38,7 +38,7 @@ in the source code were made. It will auto compile when needed
 
 To build and run the program you need to:
 1. build by inputting `make all` on the terminal
-2. run by running `./test-mergesort <array_size> <cutoff_level> <seed>` in the terminal
+2. run by running `./build/test-mergesort <array_size> <cutoff_level> <seed>` in the terminal
 
 ## Features and usage
 
