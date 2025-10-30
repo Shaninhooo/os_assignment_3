@@ -81,8 +81,8 @@ These cutoff values are interpreted were tested 3 times and an average of the ru
 Using the average runtime values, the best cutoff value was determined to be `5`.
 
 ### Testing data
-![img.png](test_data.png)
-![img.png](test_data_graph.png)
+![test_data.png](test_data.png)
+![test_data_graph.png](test_data_graph.png)
 
 ## Known Bugs
 
