@@ -1,7 +1,10 @@
 ## Assignment 3 Concurrency  
 
-* Authors: Shane Lee, Ethan Dankiw, Tony Le
-* Group name: Assignment 3 Groups 36
+- **Group name:** Assignment 3 Groups 36
+- **Authors:**
+  1. Shane Lee - a1888310
+  2. Ethan Dankiw - a1885211
+  3. Tony Le - a1908861
 
 ## Overview
 
