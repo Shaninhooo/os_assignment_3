@@ -14,14 +14,24 @@ and return the time it took to sort the randomised array.
 ## Manifest
 
 A listing of source files and other non-generated files, and a brief (one-line) explanation of the purpose of each file.
-- mergesort.c
-The file where all the functionalities of the program are in.
-- mergesort.h
-The file that has all the main variables initialised in.
-- test-mergesort.c
-The file that runs all the functions of the program using a test randomly generated array and prints the result and the time taken for finish.
-- Makefile
-The file used to compile the programs.
+- **README.md**
+  - Explains the motivations for the project, compile and run commands, and testing data.
+- **Makefile**
+    - Outlines alias commands that can be entered into the terminal to compile, run and test the mergesort algorithm.
+- **test_data.png**
+  - The raw testing data entered into the spreadsheet to calculate the cutoff value that produced the best runtime.
+- **test_data.png**
+  - The graph that visualised the average runtimes against the tested cutoff value.
+- **src/mergesort.c**
+  - The c file where the parallel and sequential mergesort algorithm logic is located.
+- **src/mergesort.h**
+  - The header file where function and variable definitions are located so they can be used in the mergesort algorithm.
+- **src/test-mergesort.c**
+  - The c file that is used to call the developed mergesort algorithm using a randomly generated array of values to sort,
+  as well as timing the execution time of the algorithm before printing the result to stdout in the terminal.
+- **build/test-mergesort**
+  - The compiled test-mergesort binary is placed here so that it does not clutter the source directory.
+  - The `build` directory is also used to store intermediary object files that are generated during compilation.
 
 ## Building the project
 
@@ -71,8 +81,6 @@ Using the average runtime values, the best cutoff value was determined to be `5`
 ### Testing data
 ![img.png](test_data.png)
 ![img.png](test_data_graph.png)
-
-
 
 ## Known Bugs
 
